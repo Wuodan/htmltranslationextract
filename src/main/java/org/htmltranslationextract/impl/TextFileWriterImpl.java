@@ -6,15 +6,17 @@ package org.htmltranslationextract.impl;
 import java.io.IOException;
 import java.util.Map.Entry;
 
+import org.htmltranslationextract.TextFileWriter;
+
 /**
  *
  * 
  */
-public class FileWriterImplSimple extends FileWriterImpl {
+public class TextFileWriterImpl extends TextFileWriter{
 
 	private String separator = " = ";
 
-	public FileWriterImplSimple(String filePath) throws IOException {
+	public TextFileWriterImpl(String filePath) throws IOException {
 		super(filePath);
 	}
 

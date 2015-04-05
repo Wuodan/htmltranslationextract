@@ -5,11 +5,11 @@ import org.jsoup.nodes.Node;
 import org.jsoup.nodes.TextNode;
 import org.jsoup.select.NodeVisitor;
 
-public class NodeFilter implements NodeVisitor {
+public class NodeVisitorImpl implements NodeVisitor {
 	
 	private TextStorer ts;
 	
-	public NodeFilter(TextStorer ts){
+	public NodeVisitorImpl(TextStorer ts){
 		this.ts = ts;
 	}
 	

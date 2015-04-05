@@ -1,16 +1,30 @@
 package org.htmltranslationextract;
 
-import java.io.Closeable;
-import java.io.Flushable;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.Iterator;
+import java.util.Map;
 import java.util.Map.Entry;
 
-/**
- * 
- *
- */
-public interface TextFileWriter extends Closeable, Flushable, Appendable, AutoCloseable {
-	
-	public void writeAll(TextStorer ts) throws Exception;
+public abstract class TextFileWriter extends BufferedWriter {
+	/**
+	 * @throws IOException
+	 * 
+	 */
+	public TextFileWriter(String filePath) throws IOException {
+		super(new FileWriter(filePath));
+	}
 
-	public void writeEntry(Entry<String, String> entry) throws Exception;
+	// write map to properties file
+	public void writeAll(Map<String, String> keyValues) throws IOException {
+		Iterator<Entry<String, String>> it = keyValues.entrySet().iterator();
+		while (it.hasNext()) {
+			writeEntry(it.next());
+		}
+	}
+
+	public abstract void writeEntry(Entry<String, String> entry)
+			throws IOException;
+
 }
